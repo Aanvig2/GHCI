@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureBank - Blockchain Banking with AI Security</title>
+    <meta name="description" content="Experience the future of secure banking with AI-powered fraud detection, blockchain transparency, and complete control over your finances." />
+    <meta name="author" content="SecureBank" />
+
+    <meta property="og:title" content="SecureBank - Blockchain Banking with AI Security" />
+    <meta property="og:description" content="Experience the future of secure banking with AI-powered fraud detection, blockchain transparency, and complete control over your finances." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Load React -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- ==========================================================
+         VOICEFLOW FLOATING CHAT WIDGET (Appears on all pages)
+    ========================================================== -->
+    <script type="text/javascript">
+      (function (d, t) {
+        var v = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+
+        v.onload = function () {
+          window.voiceflow.chat.load({
+            verify: { projectID: "691cc966d48a0eafb805251e" },
+            url: "https://general-runtime.voiceflow.com",
+            versionID: "production",
+            voice: { url: "https://runtime-api.voiceflow.com" },
+          });
+
+          console.log("Voiceflow Web Chat Loaded.");
+        };
+
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+        v.type = "text/javascript";
+        s.parentNode.insertBefore(v, s);
+      })(document, "script");
+    </script>
+
+    <!-- ==========================================================
+         VOICEFLOW OUTBOUND CALL API  (optional)
+    ========================================================== -->
+    <script>
+      async function callUser(phoneNumber) {
+        const endpoint =
+          "https://runtime-api.voiceflow.com/v1alpha1/phone-number/691f6af15ccce0dbcb08c2fe/outbound";
+
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            Authorization: "VF.DM.691ccd59d6d91caad66442a0.vOnPQyuTpWM8JRRN", /* <-- Add your DM Key */
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: phoneNumber,
+            variables: {},
+          }),
+        });
+
+        const data = await response.json();
+        console.log("Outbound Call Response:", data);
+
+        alert("AI Call triggered to: " + phoneNumber);
+      }
+    </script>
+  </body>
+</html>
